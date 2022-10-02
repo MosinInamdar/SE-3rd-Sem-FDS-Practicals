@@ -5,7 +5,7 @@ Roll No. 21113034
 */
 
 /*
-ASSIGNMENT 6.
+ASSIGNMENT 19.
 Department of Computer Engineering has student's club named 'Pinnacle Club'.
 Students of Second, third and final year of department can be granted membership
 on request. Similarly one may cancel the membership of club. First node is reserved

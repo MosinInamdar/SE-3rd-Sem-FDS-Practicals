@@ -15,8 +15,7 @@ student PRN and Name. Write functions to
 a) Add and delete the members as well as president or even secretary.
 b) Compute total number of members of club
 c) Display members
-d) Display list in reverse order using recursion
-e) Two linked lists exists for two divisions. Concatenate two lists.
+d) Two linked lists exists for two divisions. Concatenate two lists.
 */
 
 #include <iostream>
@@ -38,14 +37,12 @@ class list {
 			head = NULL;
 		}
 		node *create(int val, string n);
-		void insertEnd();
-		void insertBeg();
+		void insertEnd();//Secretary
+		void insertBeg();//President
 		void deleteAt(int i);
-		void insertAt(int i);
+		void insertAt(int i);//Members
 		void display();
 		int count();
-		void reverse();
-		void rev(node *t);
 		node* readAt(int i);
 		void concatenate(list A,list B);
 		void op();
@@ -65,7 +62,8 @@ node* list::create(int val, string n) {
 	}
 }
 
-//Insert End
+//Insert End 
+//Secretary
 void list::insertEnd() {
 	int val;
 	string n;
@@ -149,6 +147,7 @@ void list::deleteAt(int i) {
 }
 
 //Insert Beg
+//President
 void list::insertBeg() {
 	int val;
 	string n;
@@ -172,18 +171,19 @@ void list::insertBeg() {
 //Display
 void list::display() {
 	temp = head;
-	cout<<"President: ";
-	cout<< temp -> prn<<" — "<<temp -> name<<" -> ";
+	cout<<"President: "<<endl;
+	cout<< temp -> prn<<" : "<<temp -> name<<endl;
+    cout<<"Members Of The Club : "<<endl;
 	if(temp -> next != NULL) {
 		temp = temp -> next;
 	}
 	while (temp -> next != NULL) {
-		cout<< temp -> prn<<" — "<<temp -> name<<" -> ";
+		cout<<"PRN : "<< temp -> prn<<" -> "<<"Name : "<<temp -> name<<endl;
 		temp = temp -> next;
 	}
-	cout<<"Secretary: ";
-	cout<< temp -> prn<<" — "<<temp -> name<<" -> ";
-	cout<<"NULL"<<endl;
+	cout<<"Secretary: "<<endl;
+	cout<<"PRN : "<< temp -> prn<<" -> "<<"Name : "<<temp -> name<<endl;
+	cout<<"List Ended"<<endl;
 }
 
 //Count
@@ -234,7 +234,7 @@ void list::concatenate(list A,list B) {
 void list::op() {
 	while(1) {
 		int choice;
-		cout<<"\nEnter: \n1. Add \n2. Delete \n3. Member's Count \n4. Display \n5. Reverse the List \n0. Prev Menu"<<endl;
+		cout<<"\nEnter: \n1. Add \n2. Delete \n3. Member's Count \n4. Display \n 0. Prev Menu "<<endl;
 		cin>>choice;
 		switch(choice) {
 			case 1: { //Add
@@ -301,10 +301,6 @@ void list::op() {
 				}
 
 			}
-			case 5: { //Reverse
-				reverse();
-				break;
-			}
 			case 0: { //Prev Menu
 				return;
 			}
@@ -312,32 +308,7 @@ void list::op() {
 	}
 }
 
-//Reverse Recursion
-void list::rev(node *t) {
-	if(t -> next != NULL) {
-		rev (t -> next);
-	}
-	if(t == head)
-		cout<<"Secretary: "<<t -> prn<<" — "<<t -> name<<endl;
-	else if(t -> next == NULL)
-		cout<<"President: "<<t -> prn<<" — "<<t -> name<<" -> ";
-	else
-		cout<<"Member: "<<t -> prn<<" — "<<t -> name<<" -> ";
-}
-
-//Reverse
-void list::reverse() {
-	rev(head);
-}
-
-//Read At
-node* list::readAt(int i) {
-	struct node *t = head;
-	int c = count();
-	while(c--) {
-		t = t-> next;
-	}
-}
+  
 
 //Main
 int main() {
@@ -354,40 +325,3 @@ int main() {
 		}
 	}
 }
-
-//OUTPUT
-
-/*
-//Main Menu
-Enter:
-1. List A
-2. List B
-3. Concatenate
-0. Exit
-//Secondary Menu
-Enter:
-1. Add
-2. Delete
-3. Member's Count
-4. Display
-5. Reverse the List
-0. Prev Menu
-//1. Add
-Enter:
-A. Add President
-B. Add Secretary
-C. Add Member
-//2. Delete
-Enter:
-A. Delete President
-B. Delete Secretary
-C. Delete Member
-//3. Count
-Count : 7
-//4. Display
-President: 1 — A -> 2 — B -> Secretary: 3 — C -> NULL
-//5. Reverse
-President: 3 — C -> 2 — B -> Secretary: 1 — A -> NULL
-//Concatenate
-President: 1 — A -> 2 — B -> 3 — C -> 01 — a -> 02 — b -> Secretary: 03 — c -> NULL
-*/

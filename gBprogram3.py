@@ -1,8 +1,12 @@
 '''
-Experiment Number 14: Write a python program to store first year percentage of students in an array.
+Program 14: Write a python program to store first year percentage of students in an array.
                       Write function for sorting array of floating point numbers in ascending order using:
                       a) Selection Sort
                       b) Bubble Sort and display top five scores
+                      
+Name : Mosin Inamdar
+Class : Comp SS
+Roll No. : 34
 '''
 
 
